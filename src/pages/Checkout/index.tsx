@@ -1,6 +1,7 @@
 import { data } from '../../data/coffe'
 import { DeliveryAddress } from './components/DeliveryAddress'
 import { FinalValue } from './components/FinalValue'
+import { ItemCoffe } from './components/ItemCoffe'
 import { PaymentMethod } from './components/PaymentMethod'
 import { CheckoutContainer } from './styles'
 
@@ -18,10 +19,14 @@ export function Checkout() {
 
         <div className="value-container">
           <h1 className="title-check">Cafés selecionados</h1>
-          <div>
-            {filter.map((item) => item.title)}
+          <div className="total-container">
+            <ul className="list-coffe">
+              {filter.map((item) => (
+                <ItemCoffe key={item.id} coffe={item} />
+              ))}
+            </ul>
             <FinalValue />
-            <button>CONFIRMAR PEDIDO</button>
+            <button className="btn-confirm">CONFIRMAR PEDIDO</button>
           </div>
         </div>
       </form>

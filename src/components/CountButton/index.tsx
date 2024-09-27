@@ -14,11 +14,11 @@ export function CountButton() {
   }
   return (
     <CountButtonContainer>
-      <button>
-        <Minus onClick={subAmount} />
+      <button onClick={subAmount} type="button">
+        <Minus />
       </button>
       <span className="amount">{amount}</span>
-      <button onClick={addAmount}>
+      <button onClick={addAmount} type="button">
         <Plus />
       </button>
     </CountButtonContainer>

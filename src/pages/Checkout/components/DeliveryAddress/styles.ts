@@ -62,6 +62,7 @@ export const DeliveryAddressContainer = styled.div`
     border: 1px solid ${(props) => props.theme['gray-500']};
     border-radius: 8px;
 
+    color: ${(props) => props.theme['gray-700']};
     background: ${(props) => props.theme['gray-400']};
   }
 `

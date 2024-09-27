@@ -1,6 +1,8 @@
+import { FinalValueContainer } from './styles'
+
 export function FinalValue() {
   return (
-    <ul>
+    <FinalValueContainer>
       <li>
         <p>Total de itens</p>
         <span>R$ 20,50</span>
@@ -13,6 +15,6 @@ export function FinalValue() {
         <p>Total</p>
         <span>R$ 33,20</span>
       </li>
-    </ul>
+    </FinalValueContainer>
   )
 }
