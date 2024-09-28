@@ -6,14 +6,15 @@ interface CheckProps {
   title: string
   subtitle: string
   bold: boolean
+  color: string
 }
 
-export function Check({ icon, title, subtitle, bold }: CheckProps) {
+export function Check({ icon, title, subtitle, bold, color }: CheckProps) {
   const isBold = bold
 
   return (
     <CheckContainer>
-      <div className="icon">{icon}</div>
+      <div className={`icon ${color}`}>{icon}</div>
       <div className="info-container">
         <p className={isBold ? 'is-bold' : ''}>{title}</p>
         <span className={!isBold ? 'is-bold' : ''}>{subtitle}</span>

@@ -1,17 +1,17 @@
 import { Minus, Plus } from 'phosphor-react'
 import { CountButtonContainer } from './styles'
-import { useState } from 'react'
 
-export function CountButton() {
-  const [amount, setAmount] = useState(1)
+interface CountButtonProps {
+  amount: number
+  addAmount: () => void
+  subAmount: () => void
+}
 
-  function addAmount() {
-    setAmount((state) => state + 1)
-  }
-
-  function subAmount() {
-    setAmount((state) => state - 1)
-  }
+export function CountButton({
+  amount,
+  addAmount,
+  subAmount,
+}: CountButtonProps) {
   return (
     <CountButtonContainer>
       <button onClick={subAmount} type="button">

@@ -2,9 +2,13 @@ import { MapPin, ShoppingCart } from 'phosphor-react'
 import logo from '../../assets/coffeLogo.svg'
 import { NavLink } from 'react-router-dom'
 import { HeaderContainer } from './styles'
+import { useContext } from 'react'
+import { OrderContext } from '../../context/OrdersContext'
 
 export function Header() {
-  const num = 4
+  const { orders } = useContext(OrderContext)
+
+  const num = orders.length
   const cartClass: string = num > 0 ? 'full' : 'empty'
   return (
     <HeaderContainer>

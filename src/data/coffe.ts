@@ -13,9 +13,11 @@ import img12 from '../images/Latte.png'
 import img13 from '../images/Macchiato.png'
 import img14 from '../images/Mochaccino.png'
 
+import { v4 as uuidv4 } from 'uuid'
+
 export const data = [
   {
-    id: '1',
+    id: uuidv4(),
     src: img9,
     attributes: ['TRADICIONAL'],
     title: 'Expresso Tradicional',
@@ -23,7 +25,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '2',
+    id: uuidv4(),
     src: img1,
     attributes: ['TRADICIONAL'],
     title: 'Expresso Americano',
@@ -31,7 +33,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '3',
+    id: uuidv4(),
     src: img8,
     attributes: ['TRADICIONAL'],
     title: 'Expresso Cremoso',
@@ -39,7 +41,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '4',
+    id: uuidv4(),
     src: img4,
     attributes: ['TRADICIONAL', 'GELADO'],
     title: 'Expresso Gelado',
@@ -47,7 +49,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '5',
+    id: uuidv4(),
     src: img3,
     attributes: ['TRADICIONAL', 'COM LEITE'],
     title: 'Café com Leite',
@@ -55,7 +57,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '6',
+    id: uuidv4(),
     src: img12,
     attributes: ['TRADICIONAL', 'COM LEITE'],
     title: 'Latte',
@@ -64,7 +66,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '7',
+    id: uuidv4(),
     src: img5,
     attributes: ['TRADICIONAL', 'COM LEITE'],
     title: 'Capuccino',
@@ -73,7 +75,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '8',
+    id: uuidv4(),
     src: img13,
     attributes: ['TRADICIONAL', 'COM LEITE'],
     title: 'Macchiato',
@@ -82,7 +84,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '10',
+    id: uuidv4(),
     src: img14,
     attributes: ['TRADICIONAL', 'COM LEITE'],
     title: 'Mocaccino',
@@ -90,7 +92,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '11',
+    id: uuidv4(),
     src: img6,
     attributes: ['TRADICIONAL', 'COM LEITE'],
     title: 'Chocolate Quente',
@@ -98,7 +100,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '12',
+    id: uuidv4(),
     src: img7,
     attributes: ['TRADICIONAL', 'ALCOÓLICO', 'GELADO'],
     title: 'Cubano',
@@ -107,7 +109,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '13',
+    id: uuidv4(),
     src: img10,
     attributes: ['ESPECIAL'],
     title: 'Havaiano',
@@ -115,7 +117,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '14',
+    id: uuidv4(),
     src: img2,
     attributes: ['ESPECIAL'],
     title: 'Árabe',
@@ -123,7 +125,7 @@ export const data = [
     price: 9.9,
   },
   {
-    id: '15',
+    id: uuidv4(),
     src: img11,
     attributes: ['ESPECIAL', 'ALCOÓLICO'],
     title: 'Irlandês',

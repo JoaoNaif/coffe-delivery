@@ -1,13 +1,19 @@
+import { useContext } from 'react'
 import { data } from '../../data/coffe'
 import { DeliveryAddress } from './components/DeliveryAddress'
 import { FinalValue } from './components/FinalValue'
 import { ItemCoffe } from './components/ItemCoffe'
 import { PaymentMethod } from './components/PaymentMethod'
 import { CheckoutContainer } from './styles'
+import { OrderContext } from '../../context/OrdersContext'
 
 export function Checkout() {
+  const { orders } = useContext(OrderContext)
+
+  const coffeIds = orders.map((item) => item.productId)
   const coffe = data
-  const filter = coffe.filter((item) => item.id.includes('5'))
+  const filter = coffe.filter((item) => coffeIds.includes(item.id))
+
   return (
     <CheckoutContainer>
       <form className="form-container">

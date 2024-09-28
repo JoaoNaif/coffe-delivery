@@ -16,8 +16,19 @@ export const CheckContainer = styled.li`
     padding: 0.5rem;
     border-radius: 50%;
 
-    background: ${(props) => props.theme['purple-300']};
     color: ${(props) => props.theme.white};
+  }
+
+  .purple {
+    background: ${(props) => props.theme['purple-300']};
+  }
+
+  .yellow {
+    background: ${(props) => props.theme['yellow-300']};
+  }
+
+  .dark-yellow {
+    background: ${(props) => props.theme['yellow-600']};
   }
 
   .info-container {

@@ -17,18 +17,21 @@ export function Success() {
               icon={<MapPin size={20} />}
               title="Entrega em Rua Teste, 100"
               subtitle="Santo - São Paulo, SP"
+              color="purple"
             />
             <Check
               bold={false}
               icon={<Timer size={20} />}
               title="Previsão de entrega"
               subtitle="20 min - 30 min"
+              color="yellow"
             />
             <Check
               bold={false}
               icon={<CurrencyDollar size={20} />}
               title="Pagamento na entrega"
               subtitle="Cartão de Crédito"
+              color="dark-yellow"
             />
           </ul>
           <img src={photo} alt="" />
