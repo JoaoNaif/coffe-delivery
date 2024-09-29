@@ -7,9 +7,15 @@ import {
   removeOrderAction,
 } from '../reducer/orders/actions'
 
+interface CreateOrderType {
+  productId: string
+  quantity: number
+  price: number
+}
+
 interface OrderContextType {
   orders: Order[]
-  createNewOrder: (productId: string, quantity: number) => void
+  createNewOrder: (data: CreateOrderType) => void
   addOneMore: (productId: string) => void
   reduceOneLess: (productId: string) => void
   removeOrder: (orderId: string) => void
@@ -34,13 +40,14 @@ export function OrdersContextProvider({
 
   const { orders } = orderState
 
-  function createNewOrder(productId: string, quantity: number) {
+  function createNewOrder(data: CreateOrderType) {
     const id = String(new Date().getTime())
 
     const newOrder: Order = {
       id,
-      productId,
-      quantity,
+      productId: data.productId,
+      quantity: data.quantity,
+      price: data.price,
       createdAt: new Date(),
     }
 

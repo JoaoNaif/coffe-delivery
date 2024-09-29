@@ -15,6 +15,7 @@ export function ItemCoffe({ coffe }: ItemCoffeProps) {
 
   const order = orders.find((i) => i.productId === coffe.id)
   const quantity = order ? order.quantity : 1
+  const price = order ? order.price : 9.9
 
   function addAmount() {
     if (order) {
@@ -38,9 +39,7 @@ export function ItemCoffe({ coffe }: ItemCoffeProps) {
     <ItemCoffeContainer>
       <img src={coffe.src} alt="" />
       <div className="info-container">
-        <p>
-          {coffe.title} - {order?.quantity}
-        </p>
+        <p>{coffe.title}</p>
         <div className="button-container">
           <CountButton
             amount={quantity}
@@ -57,7 +56,7 @@ export function ItemCoffe({ coffe }: ItemCoffeProps) {
           </button>
         </div>
       </div>
-      <p className="price">R$ {(coffe.price * quantity).toFixed(2)}</p>
+      <p className="price">R$ {(price * quantity).toFixed(2)}</p>
     </ItemCoffeContainer>
   )
 }

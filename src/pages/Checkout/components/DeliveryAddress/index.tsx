@@ -1,7 +1,10 @@
 import { MapPinLine } from 'phosphor-react'
 import { DeliveryAddressContainer } from './styles'
+import { useFormContext } from 'react-hook-form'
 
 export function DeliveryAddress() {
+  const { register } = useFormContext()
+
   return (
     <DeliveryAddressContainer>
       <div className="title-container">
@@ -11,16 +14,49 @@ export function DeliveryAddress() {
           <p>Informe o endereço onde deseja receber seu pedido</p>
         </div>
       </div>
-      <input type="text" placeholder="CEP" />
-      <input type="text" placeholder="Rua" />
+      <input type="text" placeholder="CEP" id="cep" {...register('cep')} />
+      <input
+        type="text"
+        placeholder="Rua"
+        id="street"
+        {...register('street')}
+      />
       <div className="number-container">
-        <input type="text" placeholder="Número" />
-        <input type="text" placeholder="Complemento" className="complement" />
+        <input
+          type="number"
+          placeholder="Número"
+          id="number"
+          {...register('number', { valueAsNumber: true })}
+        />
+        <input
+          type="text"
+          placeholder="Complemento"
+          className="complement"
+          id="complement"
+          {...register('complement')}
+        />
       </div>
       <div className="city-container">
-        <input type="text" placeholder="Bairro" />
-        <input type="text" placeholder="Cidade" className="city" />
-        <input type="text" placeholder="UF" className="uf" />
+        <input
+          type="text"
+          placeholder="Bairro"
+          id="district"
+          {...register('district')}
+        />
+        <input
+          type="text"
+          placeholder="Cidade"
+          className="city"
+          id="city"
+          {...register('city')}
+        />
+        <input
+          type="text"
+          placeholder="UF"
+          className="uf"
+          id="uf"
+          {...register('uf')}
+        />
       </div>
     </DeliveryAddressContainer>
   )

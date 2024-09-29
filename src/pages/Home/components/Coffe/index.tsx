@@ -17,6 +17,7 @@ export function Coffe({ coffe }: CoffeProps) {
   const [amount, setAmount] = useState(1)
 
   const productId = coffe.id
+  const price = coffe.price
 
   function addAmount() {
     setAmount((state) => state + 1)
@@ -32,8 +33,17 @@ export function Coffe({ coffe }: CoffeProps) {
     })
   }
 
-  function handleCreateNewOrder(productId: string, quantity: number) {
-    createNewOrder(productId, quantity)
+  function handleCreateNewOrder(
+    productId: string,
+    quantity: number,
+    price: number,
+  ) {
+    const newData = {
+      productId,
+      quantity,
+      price,
+    }
+    createNewOrder(newData)
   }
 
   return (
@@ -59,7 +69,7 @@ export function Coffe({ coffe }: CoffeProps) {
           />
           <button
             className="sale"
-            onClick={() => handleCreateNewOrder(productId, amount)}
+            onClick={() => handleCreateNewOrder(productId, amount, price)}
           >
             <ShoppingCart weight="fill" size={20} />
           </button>
