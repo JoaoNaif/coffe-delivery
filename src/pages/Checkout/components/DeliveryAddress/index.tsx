@@ -40,7 +40,7 @@ export function DeliveryAddress() {
         />
         <input
           type="text"
-          placeholder="Complemento"
+          placeholder="Complemento (opicional)"
           className="complement"
           id="complement"
           {...register('complement')}

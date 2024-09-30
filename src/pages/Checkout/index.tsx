@@ -10,7 +10,8 @@ import { FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AddressContext } from '../../context/AddressContext'
-import { NavLink } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { CartEmpty } from './components/CartEmpty'
 
 const newAddressValidationSchema = z.object({
   cep: z.string().min(8, 'CEP deve ter pelo menos 8 caracteres'),
@@ -26,8 +27,10 @@ const newAddressValidationSchema = z.object({
 export type NewAddressFormData = z.infer<typeof newAddressValidationSchema>
 
 export function Checkout() {
-  const { address, createNewAddress } = useContext(AddressContext)
+  const { createNewAddress } = useContext(AddressContext)
   const { orders } = useContext(OrderContext)
+
+  const navigate = useNavigate()
 
   const coffeIds = orders.map((item) => item.productId)
   const coffe = data
@@ -50,41 +53,46 @@ export function Checkout() {
   const { handleSubmit, reset } = newAddressForm
 
   function handleCreateNewAddress(data: NewAddressFormData) {
-    createNewAddress(data)
-    reset()
-    console.log(data)
+    if (orders.length > 0) {
+      createNewAddress(data)
+      reset()
+      navigate('/success')
+    }
   }
 
   return (
     <CheckoutContainer>
-      <form
-        className="form-container"
-        onSubmit={handleSubmit(handleCreateNewAddress)}
-      >
-        <div className="input-container">
-          <h1 className="title-check">Complete seu pedido</h1>
-          {address.map((i) => i.data.city)}
-          <FormProvider {...newAddressForm}>
-            <DeliveryAddress />
-            <PaymentMethod />
-          </FormProvider>
-        </div>
-
-        <div className="value-container">
-          <h1 className="title-check">Cafés selecionados</h1>
-          <div className="total-container">
-            <ul className="list-coffe">
-              {filter.map((item) => (
-                <ItemCoffe key={item.id} coffe={item} />
-              ))}
-            </ul>
-            <FinalValue />
-            <button className="btn-confirm" type="submit">
-              CONFIRMAR PEDIDO
-            </button>
+      {orders.length > 0 ? (
+        <form
+          className="form-container"
+          onSubmit={handleSubmit(handleCreateNewAddress)}
+        >
+          <div className="input-container">
+            <h1 className="title-check">Complete seu pedido</h1>
+            <FormProvider {...newAddressForm}>
+              <DeliveryAddress />
+              <PaymentMethod />
+            </FormProvider>
           </div>
-        </div>
-      </form>
+
+          <div className="value-container">
+            <h1 className="title-check">Cafés selecionados</h1>
+            <div className="total-container">
+              <ul className="list-coffe">
+                {filter.map((item) => (
+                  <ItemCoffe key={item.id} coffe={item} />
+                ))}
+              </ul>
+              <FinalValue />
+              <button className="btn-confirm" type="submit">
+                CONFIRMAR PEDIDO
+              </button>
+            </div>
+          </div>
+        </form>
+      ) : (
+        <CartEmpty />
+      )}
     </CheckoutContainer>
   )
 }
