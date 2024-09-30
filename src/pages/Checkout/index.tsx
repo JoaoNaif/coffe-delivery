@@ -21,7 +21,7 @@ const newAddressValidationSchema = z.object({
   district: z.string().min(1, 'Bairro é obrigatório'),
   city: z.string().min(1, 'Cidade é obrigatória'),
   uf: z.string().length(2, 'UF deve ter 2 caracteres'),
-  payment: z.enum(['money', 'credit_card', 'debit_card']),
+  payment: z.enum(['money', 'credit', 'debit']),
 })
 
 export type NewAddressFormData = z.infer<typeof newAddressValidationSchema>

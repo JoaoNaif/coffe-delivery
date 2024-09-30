@@ -6,7 +6,7 @@ export const DescriptionContainer = styled.section`
   padding: 5.75rem 0;
 
   div {
-    width: 50%;
+    width: 60%;
 
     display: flex;
     flex-wrap: wrap;

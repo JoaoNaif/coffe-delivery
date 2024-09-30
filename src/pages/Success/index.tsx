@@ -3,8 +3,18 @@ import { Check } from './components/Check'
 import { SuccessContainer } from './styles'
 
 import photo from '../../assets/Illustration.svg'
+import { useContext } from 'react'
+import { AddressContext } from '../../context/AddressContext'
 
 export function Success() {
+  const { address } = useContext(AddressContext)
+
+  const last = address[address.length - 1]
+
+  const money = last.data.payment === 'money' ? 'Dinheiro' : ''
+  const debit = last.data.payment === 'debit' ? 'Cartão de débito' : ''
+  const credit = last.data.payment === 'credit' ? 'Cartão de crédito' : ''
+
   return (
     <SuccessContainer>
       <div className="check-container">
@@ -15,8 +25,8 @@ export function Success() {
             <Check
               bold={true}
               icon={<MapPin size={20} />}
-              title="Entrega em Rua Teste, 100"
-              subtitle="Santo - São Paulo, SP"
+              title={`Rua ${last.data.street}, ${last.data.number}`}
+              subtitle={`${last.data.district} - ${last.data.city}, ${last.data.uf}`}
               color="purple"
             />
             <Check
@@ -30,7 +40,7 @@ export function Success() {
               bold={false}
               icon={<CurrencyDollar size={20} />}
               title="Pagamento na entrega"
-              subtitle="Cartão de Crédito"
+              subtitle={`${money}${credit}${debit}`}
               color="dark-yellow"
             />
           </ul>

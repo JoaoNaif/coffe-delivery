@@ -27,11 +27,11 @@ export const CoffeContainer = styled.li`
 
     display: flex;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 0.5rem;
 
     font-family: 'Baloo 2';
     font-weight: bold;
-    font-size: 0.825rem;
+    font-size: 0.75rem;
     margin: 0.75rem 0;
 
     color: ${(props) => props.theme['yellow-300']};

@@ -52,7 +52,7 @@ export const DeliveryAddressContainer = styled.div`
     }
 
     .uf {
-      width: 15%;
+      width: 20%;
     }
   }
 
