@@ -40,6 +40,12 @@ export const CheckoutContainer = styled.main`
           color: ${(props) => props.theme.white};
 
           cursor: pointer;
+
+          transition: background-color 0.3s linear;
+
+          &:hover {
+            background: ${(props) => props.theme['yellow-600']};
+          }
         }
       }
     }

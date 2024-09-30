@@ -38,6 +38,10 @@ export const ItemCoffeContainer = styled.li`
 
         cursor: pointer;
 
+        &:hover {
+          background: ${(props) => props.theme['gray-500']};
+        }
+
         span {
           font-size: 0.75rem;
           color: ${(props) => props.theme['gray-700']};

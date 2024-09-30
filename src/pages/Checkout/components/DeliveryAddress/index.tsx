@@ -3,7 +3,9 @@ import { DeliveryAddressContainer } from './styles'
 import { useFormContext } from 'react-hook-form'
 
 export function DeliveryAddress() {
-  const { register } = useFormContext()
+  const { register, formState } = useFormContext()
+
+  const { errors } = formState
 
   return (
     <DeliveryAddressContainer>
@@ -14,9 +16,16 @@ export function DeliveryAddress() {
           <p>Informe o endereço onde deseja receber seu pedido</p>
         </div>
       </div>
-      <input type="text" placeholder="CEP" id="cep" {...register('cep')} />
       <input
         type="text"
+        className={errors.cep && 'error'}
+        placeholder="CEP"
+        id="cep"
+        {...register('cep')}
+      />
+      <input
+        type="text"
+        className={errors.street && 'error'}
         placeholder="Rua"
         id="street"
         {...register('street')}
@@ -24,6 +33,7 @@ export function DeliveryAddress() {
       <div className="number-container">
         <input
           type="number"
+          className={errors.number && 'error'}
           placeholder="Número"
           id="number"
           {...register('number', { valueAsNumber: true })}
@@ -39,21 +49,22 @@ export function DeliveryAddress() {
       <div className="city-container">
         <input
           type="text"
+          className={errors.district && 'error'}
           placeholder="Bairro"
           id="district"
           {...register('district')}
         />
         <input
           type="text"
+          className={`city ${errors.district && 'error'}`}
           placeholder="Cidade"
-          className="city"
           id="city"
           {...register('city')}
         />
         <input
           type="text"
+          className={`uf ${errors.district && 'error'}`}
           placeholder="UF"
-          className="uf"
           id="uf"
           {...register('uf')}
         />

@@ -48,11 +48,11 @@ export const DeliveryAddressContainer = styled.div`
     gap: 0.75rem;
 
     .city {
-      flex: 1;
+      width: 70%;
     }
 
     .uf {
-      width: 10%;
+      width: 15%;
     }
   }
 
@@ -64,5 +64,14 @@ export const DeliveryAddressContainer = styled.div`
 
     color: ${(props) => props.theme['gray-700']};
     background: ${(props) => props.theme['gray-400']};
+  }
+
+  .error {
+    border: 1px solid ${(props) => props.theme['red-600']};
+
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px ${(props) => props.theme['red-600']};
+    }
   }
 `

@@ -9,21 +9,24 @@ import { OrderContext } from '../../context/OrdersContext'
 import { FormProvider, useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { AddressContext } from '../../context/AddressContext'
+import { NavLink } from 'react-router-dom'
 
 const newAddressValidationSchema = z.object({
-  cep: z.string(),
-  street: z.string(),
-  number: z.coerce.number(),
+  cep: z.string().min(8, 'CEP deve ter pelo menos 8 caracteres'),
+  street: z.string().min(1, 'Rua é obrigatória'),
+  number: z.number().min(1, 'Número deve ser maior que 0'),
   complement: z.string().optional(),
-  district: z.string(),
-  city: z.string(),
-  uf: z.string().max(2, 'maximum 2 characters'),
-  payment: z.enum(['money', 'debit', 'credit']),
+  district: z.string().min(1, 'Bairro é obrigatório'),
+  city: z.string().min(1, 'Cidade é obrigatória'),
+  uf: z.string().length(2, 'UF deve ter 2 caracteres'),
+  payment: z.enum(['money', 'credit_card', 'debit_card']),
 })
 
-type NewAddressFormData = z.infer<typeof newAddressValidationSchema>
+export type NewAddressFormData = z.infer<typeof newAddressValidationSchema>
 
 export function Checkout() {
+  const { address, createNewAddress } = useContext(AddressContext)
   const { orders } = useContext(OrderContext)
 
   const coffeIds = orders.map((item) => item.productId)
@@ -47,8 +50,9 @@ export function Checkout() {
   const { handleSubmit, reset } = newAddressForm
 
   function handleCreateNewAddress(data: NewAddressFormData) {
-    console.log(data)
+    createNewAddress(data)
     reset()
+    console.log(data)
   }
 
   return (
@@ -59,6 +63,7 @@ export function Checkout() {
       >
         <div className="input-container">
           <h1 className="title-check">Complete seu pedido</h1>
+          {address.map((i) => i.data.city)}
           <FormProvider {...newAddressForm}>
             <DeliveryAddress />
             <PaymentMethod />
