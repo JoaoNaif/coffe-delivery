@@ -2,12 +2,17 @@ import { NavLink } from 'react-router-dom'
 import { SmileySad } from 'phosphor-react'
 import { CartEmptyContainer } from './styles'
 
-export function CartEmpty() {
+interface CartEmptyProps {
+  title: string
+  subtitle: string
+}
+
+export function CartEmpty({ title, subtitle }: CartEmptyProps) {
   return (
     <CartEmptyContainer>
       <SmileySad size={100} />
-      <h1>Seu carrinho está vazio</h1>
-      <p>Nevegue pela loja e escolha seu café</p>
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
       <NavLink to={'/'}>QUERO CAFÉ!!!</NavLink>
     </CartEmptyContainer>
   )

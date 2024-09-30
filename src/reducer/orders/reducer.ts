@@ -81,6 +81,11 @@ export function ordersReducer(state: OrderState, action: any) {
           (order) => order.id !== action.payload.orderId,
         ),
       }
+    case ActionTypes.CLEAR_ALL_ORDERS:
+      return {
+        ...state,
+        orders: [],
+      }
     default:
       return state
   }

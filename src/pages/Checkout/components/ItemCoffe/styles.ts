@@ -10,6 +10,10 @@ export const ItemCoffeContainer = styled.li`
 
   img {
     margin-right: 1.25rem;
+
+    @media (max-width: 425px) {
+      width: 20%;
+    }
   }
 
   .info-container {

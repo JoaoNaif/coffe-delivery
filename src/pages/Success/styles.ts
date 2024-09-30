@@ -8,6 +8,11 @@ export const SuccessContainer = styled.main`
     display: flex;
     gap: 3rem;
     width: 100%;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .check-container {
@@ -44,10 +49,26 @@ export const SuccessContainer = styled.main`
         )
         1;
       position: relative;
+
+      @media (max-width: 1024px) {
+        width: 70%;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
 
     img {
       flex: 1;
+
+      @media (max-width: 1024px) {
+        width: 30%;
+      }
+
+      @media (max-width: 768px) {
+        width: 100%;
+      }
     }
   }
 `

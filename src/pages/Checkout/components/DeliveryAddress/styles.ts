@@ -41,6 +41,10 @@ export const DeliveryAddressContainer = styled.div`
     .complement {
       flex: 1;
     }
+
+    @media (max-width: 425px) {
+      flex-direction: column;
+    }
   }
 
   .city-container {
@@ -53,6 +57,18 @@ export const DeliveryAddressContainer = styled.div`
 
     .uf {
       width: 20%;
+    }
+
+    @media (max-width: 425px) {
+      flex-direction: column;
+
+      .city {
+        width: 100%;
+      }
+
+      .uf {
+        width: 100%;
+      }
     }
   }
 

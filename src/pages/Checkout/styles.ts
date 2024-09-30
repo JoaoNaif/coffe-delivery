@@ -7,6 +7,10 @@ export const CheckoutContainer = styled.main`
 
     margin-top: 3rem;
 
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
+
     .input-container {
       flex: 1;
     }
@@ -20,11 +24,22 @@ export const CheckoutContainer = styled.main`
 
         border-radius: 8px 60px 8px 60px;
 
+        @media (max-width: 425px) {
+          padding: 2rem 0.5rem;
+        }
+
         .list-coffe {
           display: flex;
           flex-direction: column;
 
           gap: 1.5rem;
+
+          max-height: 20rem;
+          overflow-y: auto;
+
+          @media (max-width: 425px) {
+            gap: 0.5rem;
+          }
         }
 
         .btn-confirm {

@@ -3,6 +3,7 @@ import { Order, ordersReducer } from '../reducer/orders/reducer'
 import {
   addNewOrderAction,
   addOneMoreAction,
+  clearAllOrdersAction,
   reduceOneLessAction,
   removeOrderAction,
 } from '../reducer/orders/actions'
@@ -19,6 +20,7 @@ interface OrderContextType {
   addOneMore: (productId: string) => void
   reduceOneLess: (productId: string) => void
   removeOrder: (orderId: string) => void
+  clearAllOrders: () => void
 }
 
 export const OrderContext = createContext({} as OrderContextType)
@@ -66,9 +68,20 @@ export function OrdersContextProvider({
     dispatch(removeOrderAction(orderId))
   }
 
+  function clearAllOrders() {
+    dispatch(clearAllOrdersAction())
+  }
+
   return (
     <OrderContext.Provider
-      value={{ orders, createNewOrder, addOneMore, reduceOneLess, removeOrder }}
+      value={{
+        orders,
+        createNewOrder,
+        addOneMore,
+        reduceOneLess,
+        removeOrder,
+        clearAllOrders,
+      }}
     >
       {children}
     </OrderContext.Provider>

@@ -11,7 +11,7 @@ import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { AddressContext } from '../../context/AddressContext'
 import { useNavigate } from 'react-router-dom'
-import { CartEmpty } from './components/CartEmpty'
+import { CartEmpty } from '../../components/CartEmpty'
 
 const newAddressValidationSchema = z.object({
   cep: z.string().min(8, 'CEP deve ter pelo menos 8 caracteres'),
@@ -28,7 +28,7 @@ export type NewAddressFormData = z.infer<typeof newAddressValidationSchema>
 
 export function Checkout() {
   const { createNewAddress } = useContext(AddressContext)
-  const { orders } = useContext(OrderContext)
+  const { orders, clearAllOrders } = useContext(OrderContext)
 
   const navigate = useNavigate()
 
@@ -57,6 +57,7 @@ export function Checkout() {
       createNewAddress(data)
       reset()
       navigate('/success')
+      clearAllOrders()
     }
   }
 
@@ -91,7 +92,10 @@ export function Checkout() {
           </div>
         </form>
       ) : (
-        <CartEmpty />
+        <CartEmpty
+          title="Seu carrinho está vazio"
+          subtitle="Nevegue pela loja e escolha seu café"
+        />
       )}
     </CheckoutContainer>
   )

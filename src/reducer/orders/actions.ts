@@ -4,7 +4,8 @@ export enum ActionTypes {
     ADD_NEW_ORDER = 'ADD_NEW_ORDER',
     ADD_ONE_MORE = 'ADD_ONE_MORE',
     REDUCE_ONE_LESS = 'REDUCE_ONE_LESS',
-    REMOVE_ORDER = 'REMOVE_ORDER'
+    REMOVE_ORDER = 'REMOVE_ORDER',
+    CLEAR_ALL_ORDERS = 'CLEAR_ALL_ORDERS'
 }
 
 export function addNewOrderAction(newOrder: Order) {
@@ -40,6 +41,12 @@ export function removeOrderAction(orderId: string){
         payload: {
             orderId
         }
+    }
+}
+
+export function clearAllOrdersAction() {
+    return {
+        type: ActionTypes.CLEAR_ALL_ORDERS
     }
 }
 
